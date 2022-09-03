@@ -41,14 +41,20 @@ class HomePage extends StatelessWidget {
             final user = FirebaseAuth.instance.currentUser;
             if (user != null) {
               if (user.emailVerified) {
+                // basicWarning(context, 'Verified User');
+                devtools.log(user.toString());
+                devtools.log('User verified');
                 return const NotesView();
               } else {
                 // return const VerifyEmailView();
                 devtools.log(user.toString());
-                return const NotesView();
-                // return const Text('Done');
+                devtools.log('Passing to verify email view');
+                // basicWarning(context, 'Non verified User');
+                // return const NotesView();
+                return const VerifyEmailView();
               }
             } else {
+              // basicWarning(context, 'User have to verify');
               return const LoginView();
             }
           default:
@@ -126,4 +132,27 @@ Future<bool> showLogOutDialog(BuildContext context) {
           ],
         );
       }).then((value) => value ?? false);
+}
+
+Future<void> basicWarning(
+  BuildContext context,
+  String text,
+) {
+  return showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: const Text("Basic Warning !"),
+        content: Text(text),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: const Text('OK'),
+          ),
+        ],
+      );
+    },
+  );
 }
