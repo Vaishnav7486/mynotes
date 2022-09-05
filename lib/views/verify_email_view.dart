@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:mynotesapp/constants/routes.dart';
 import 'package:mynotesapp/services/auth/auth_service.dart';
 
@@ -27,7 +26,7 @@ class _VerifyEmailViewState extends State<VerifyEmailView> {
               onPressed: () async {
                 await AuthService.firebase().sendEmailVerification();
               },
-              child: const Text("send email")),
+              child: const Text("send email"),),
           TextButton(
             onPressed: () async {
               await AuthService.firebase().logout();

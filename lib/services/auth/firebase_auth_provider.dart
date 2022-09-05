@@ -47,17 +47,7 @@ class FirebaseAuthProvider implements AuthProvider {
   }
 
   @override
-  AuthUser? get currentUser {
-    final user = FirebaseAuth.instance.currentUser;
-    if (user != null) {
-      return AuthUser.fromFirebase(user);
-    } else {
-      return null;
-    }
-  }
-
-  @override
-  Future<AuthUser?> login({
+  Future<AuthUser?> logIn({
     required String email,
     required String password,
   }) async {
@@ -105,4 +95,25 @@ class FirebaseAuthProvider implements AuthProvider {
       throw UserNotFoundAuthException();
     }
   }
+
+  @override
+  AuthUser get currentUser {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      return AuthUser.fromFirebase(user);
+    } else {
+      throw UserNotFoundAuthException();
+    }
+  }
 }
+
+// AuthUser? get currentUser {
+//   final user = FirebaseAuth.instance.currentUser;
+//   if (user != null) {
+//     return AuthUser.fromFirebase(user);
+//   } else {
+//     // return null; Dont know whether this is correct or not
+//     // throw UserNotFoundAuthException();
+//     return null;
+//   }
+// }
