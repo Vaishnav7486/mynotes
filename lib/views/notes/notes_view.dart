@@ -8,7 +8,7 @@ class NotesView extends StatefulWidget {
   const NotesView({Key? key}) : super(key: key);
 
   @override
-  State<NotesView> createState() => _NotesViewState();
+  _NotesViewState createState() => _NotesViewState();
 }
 
 class _NotesViewState extends State<NotesView> {
@@ -16,7 +16,7 @@ class _NotesViewState extends State<NotesView> {
   String get userEmail => AuthService.firebase().currentUser!.email!;
 
   @override
-  void initState() async {
+  void initState() {
     _notesService = NotesService();
     super.initState();
   }
@@ -31,8 +31,13 @@ class _NotesViewState extends State<NotesView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Notes'),
+        title: const Text('Your notes is here'),
         actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed(newNotesRoute);
+              },
+              icon: const Icon(Icons.add)),
           PopupMenuButton<MenuAction>(
             onSelected: (value) async {
               // print(value);
