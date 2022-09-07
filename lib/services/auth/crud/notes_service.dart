@@ -91,7 +91,7 @@ class NotesService {
 
   Future<DatabaseUser> getUser({required String email}) async {
     final db = _getDatabaseOrThrow();
-    final results = db.query(
+    final results = await db.query(
       userTable,
       limit: 1,
       where: 'email = ?',
