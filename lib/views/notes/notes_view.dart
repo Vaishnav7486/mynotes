@@ -3,6 +3,7 @@ import 'package:mynotesapp/constants/routes.dart';
 import 'package:mynotesapp/enums/menu_action.dart';
 import 'package:mynotesapp/services/auth/auth_service.dart';
 import 'package:mynotesapp/services/auth/crud/notes_service.dart';
+import 'package:sqflite/sqflite.dart';
 
 class NotesView extends StatefulWidget {
   const NotesView({Key? key}) : super(key: key);
@@ -22,16 +23,10 @@ class _NotesViewState extends State<NotesView> {
   }
 
   @override
-  void dispose() {
-    _notesService.close();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Your notes is here'),  
+        title: const Text('Your notes is here'),
         actions: [
           IconButton(
               onPressed: () {
@@ -69,16 +64,35 @@ class _NotesViewState extends State<NotesView> {
           switch (snapshot.connectionState) {
             case ConnectionState.done:
               return StreamBuilder(
-                  stream: _notesService.allNotes,
-                  builder: (context, snapshot) {
-                    switch (snapshot.connectionState) {
-                      case ConnectionState.waiting:
-                      case ConnectionState.active:
-                        return const Text('Waiting for all notes ...');
-                      default:
+                stream: _notesService.allNotes,
+                builder: (context, snapshot) {
+                  switch (snapshot.connectionState) {
+                    case ConnectionState.waiting:
+                    case ConnectionState.active:
+                      if (snapshot.hasData) {
+                        final allNotes = snapshot.data as List<DatabaseNote>;
+                        return ListView.builder(
+                          itemCount: allNotes.length,
+                          itemBuilder: (context, index) {
+                            final note = allNotes[index];
+                            return ListTile(
+                              title: Text(
+                                note.text,
+                                maxLines: 1,
+                                softWrap: true,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            );
+                          },
+                        );
+                      } else {
                         return const CircularProgressIndicator();
-                    }
-                  });
+                      }
+                    default:
+                      return const CircularProgressIndicator();
+                  }
+                },
+              );
             // return const Text('This is where the notes will be shown');
             default:
               return const CircularProgressIndicator();
