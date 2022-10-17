@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mynotesapp/utility/dialogs/generic_dialog.dart';
+import 'package:mynotesapp/utilities/dialogs/generic_dialog.dart';
 
 
 Future<void> showCannotShareEmptyDialog(BuildContext context) {

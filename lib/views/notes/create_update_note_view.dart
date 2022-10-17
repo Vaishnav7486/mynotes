@@ -6,8 +6,8 @@
 // import 'package:mynotesapp/services/crud/notes_service.dart';
 import 'package:flutter/material.dart';
 import 'package:mynotesapp/services/auth/auth_service.dart';
-import 'package:mynotesapp/utility/dialogs/cannot_share_empty_note_dialog.dart';
-import 'package:mynotesapp/utility/generics/get_arguments.dart';
+import 'package:mynotesapp/utilities/dialogs/cannot_share_empty_note_dialog.dart';
+import 'package:mynotesapp/utilities/generics/get_arguments.dart';
 import 'package:mynotesapp/services/cloud/cloud_note.dart';
 import 'package:mynotesapp/services/cloud/cloud_storage_exceptions.dart';
 import 'package:mynotesapp/services/cloud/firebase_cloud_storage.dart';

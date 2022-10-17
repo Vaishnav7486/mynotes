@@ -1,15 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mynotesapp/utility/dialogs/generic_dialog.dart';
+import 'package:mynotesapp/utilities/dialogs/generic_dialog.dart';
 
-Future<bool> showDeleteDialog(BuildContext context) {
+Future<bool> showLogOutDialog(BuildContext context) {
   return showGenericDialog<bool>(
     context: context,
-    title: 'Delete',
-    content: 'Are you sure you want to Delete this item?',
+    title: 'Logout',
+    content: 'Are you sure you want to logout?',
     optionsBuilder: () => {
       'Cancel': false,
-      'Yes': true,
+      'Logout': true,
     },
   ).then(
     (value) => value ?? false,

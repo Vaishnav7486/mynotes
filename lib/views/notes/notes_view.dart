@@ -6,7 +6,7 @@ import 'package:mynotesapp/services/auth/auth_service.dart';
 import 'package:mynotesapp/services/auth/bloc/auth_event.dart';
 import 'package:mynotesapp/services/cloud/cloud_note.dart';
 import 'package:mynotesapp/services/cloud/firebase_cloud_storage.dart';
-import 'package:mynotesapp/utility/dialogs/logout_dialog.dart';
+import 'package:mynotesapp/utilities/dialogs/logout_dialog.dart';
 import 'package:mynotesapp/views/notes/notes_list_view.dart';
 import 'package:mynotesapp/services/auth/bloc/auth_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart' show ReadContext;
