@@ -6,6 +6,7 @@ import 'package:mynotesapp/services/auth/bloc/auth_bloc.dart';
 import 'package:mynotesapp/services/auth/bloc/auth_event.dart';
 import 'package:mynotesapp/services/auth/bloc/auth_state.dart';
 import 'package:mynotesapp/services/auth/firebase_auth_provider.dart';
+import 'package:mynotesapp/views/forgot_password_view.dart';
 import 'package:mynotesapp/views/login_view.dart';
 import 'package:mynotesapp/views/notes/create_update_note_view.dart';
 import 'package:mynotesapp/views/notes/notes_view.dart';
@@ -44,7 +45,7 @@ class HomePage extends StatelessWidget {
               context: context,
               text: state.loadingText ?? "please wait a moment");
         } else {
-          LoadingScreen().hide(); 
+          LoadingScreen().hide();
         }
       },
       builder: (context, state) {
@@ -54,6 +55,8 @@ class HomePage extends StatelessWidget {
           return const VerifyEmailView();
         } else if (state is AuthStateLoggedOut) {
           return const LoginView();
+        } else if (state is AuthStateForgotPassword) {
+          return const ForgotPasswordView();
         } else if (state is AuthStateRegistering) {
           return const RegisterView();
         } else {
@@ -246,7 +249,6 @@ class HomePage extends StatelessWidget {
 // }
 
 
-// time stopped - 1.05.31.xx 
+// time stopped - 1.06.34.40 
 
 // note that I have commented everything in the auth_test.dart
- 
