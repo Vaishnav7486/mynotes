@@ -18,6 +18,7 @@ void main() {
   runApp(
     MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -249,6 +250,8 @@ class HomePage extends StatelessWidget {
 // }
 
 
-// time stopped - 1.07.46.36 
+// time stopped - 1.08.51.00
+
+// chapter 47
 
 // note that I have commented everything in the auth_test.dart
