@@ -250,8 +250,13 @@ class HomePage extends StatelessWidget {
 // }
 
 
-// time stopped - 1.09.20.00
+// time stopped - 1.10.30.00
 
-// chapter 49
+// taking ss of 7" tab
 
 // note that I have commented everything in the auth_test.dart
+// remaining things 
+// 1 creating a app key  - genkey -v -keystore.......
+// project / android / key.properties 
+// update build.gradle for signing in 
+// flutter build app bundle
